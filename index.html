@@ -8,6 +8,35 @@
 <meta property="og:title" content="Plant Per House — A plant in every bottle">
 <meta property="og:description" content="Hand-paired botanicals in repurposed glass.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- ==========================================================
+     ANALYTICS — replace IDs once you have them
+     GA4: get a Measurement ID from analytics.google.com (G-XXXXXXXXXX)
+     Meta Pixel: get a Pixel ID from business.facebook.com → Events Manager
+     ========================================================== -->
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RS9BD790QS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RS9BD790QS');
+</script>
+
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '282576175727292');
+  fbq('track', 'PageView');
+</script>
 <style>
   :root {
     --green: #2D4A3E;
@@ -167,6 +196,33 @@
   }
   .gallery-note { text-align: center; margin-top: 2.5rem; color: var(--gray); font-style: italic; font-family: var(--serif); font-size: 1.05rem; }
 
+  /* ── Real photo gallery support ── */
+  .gallery-item img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform .5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-item .g-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,36,32,.82) 0%, rgba(26,36,32,.08) 55%, transparent 100%);
+    z-index: 1; border-radius: 8px;
+  }
+  .gallery-item .label-small,
+  .gallery-item .label-build { position: relative; z-index: 2; }
+  .gallery-featured { grid-column: span 2; aspect-ratio: 16/9; }
+  @media (max-width: 600px) { .gallery-featured { grid-column: span 1; aspect-ratio: 4/5; } }
+  .badge-led {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--terracotta); color: var(--cream);
+    font-size: .68rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: .3rem .75rem; border-radius: 20px;
+    z-index: 3;
+  }
+
   .contact { background: var(--green); color: var(--cream); }
   .contact-inner { max-width: 640px; margin: 0 auto; text-align: center; }
   .contact h2 { color: var(--cream-warm); margin-bottom: 1rem; }
@@ -260,14 +316,82 @@
   <h2>Recent builds.</h2>
   <p class="subtitle">A few pairings to spark ideas — or design your own.</p>
   <div class="gallery-grid">
-    <div class="gallery-item"><span class="label-small">No. 01</span><span class="label-build">Golden Pothos × Bordeaux Bottle</span></div>
-    <div class="gallery-item"><span class="label-small">No. 02</span><span class="label-build">Lucky Bamboo × Champagne</span></div>
-    <div class="gallery-item"><span class="label-small">No. 03</span><span class="label-build">Heart-leaf Philodendron × Whiskey Decanter</span></div>
-    <div class="gallery-item"><span class="label-small">No. 04</span><span class="label-build">Monstera × Apothecary Jar</span></div>
-    <div class="gallery-item"><span class="label-small">No. 05</span><span class="label-build">Spider Plant × Gin Bottle</span></div>
-    <div class="gallery-item"><span class="label-small">No. 06</span><span class="label-build">Peace Lily × Olive Oil Bottle</span></div>
+
+    <!-- ── Featured: AI-edited with LED base lighting ── -->
+    <div class="gallery-item gallery-featured">
+      <span class="badge-led">✦ LED Accented</span>
+      <img src="photos/AI%20Editted/b76af7ff-f173-4c20-836d-bd648a64f12c.JPG" alt="Plant in a wine bottle with ambient LED lighting at the base" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">Featured</span>
+      <span class="label-build">Golden Pothos × Bordeaux — with ambient base lighting add-on</span>
+    </div>
+
+    <!-- ── No. 01 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_00_34%20PM.png" alt="Golden Pothos in a Bordeaux bottle" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 01</span>
+      <span class="label-build">Golden Pothos × Bordeaux Bottle</span>
+    </div>
+
+    <!-- ── No. 02 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_00_38%20PM.png" alt="Lucky Bamboo in a Champagne bottle" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 02</span>
+      <span class="label-build">Lucky Bamboo × Champagne</span>
+    </div>
+
+    <!-- ── No. 03 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_00_54%20PM.png" alt="Heart-leaf Philodendron in a Whiskey Decanter" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 03</span>
+      <span class="label-build">Heart-leaf Philodendron × Whiskey Decanter</span>
+    </div>
+
+    <!-- ── No. 04 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_00_59%20PM.png" alt="Monstera in an Apothecary Jar" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 04</span>
+      <span class="label-build">Monstera × Apothecary Jar</span>
+    </div>
+
+    <!-- ── No. 05 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_01_04%20PM.png" alt="Spider Plant in a Gin Bottle" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 05</span>
+      <span class="label-build">Spider Plant × Gin Bottle</span>
+    </div>
+
+    <!-- ── No. 06 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_01_11%20PM.png" alt="Peace Lily in an Olive Oil Bottle" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 06</span>
+      <span class="label-build">Peace Lily × Olive Oil Bottle</span>
+    </div>
+
+    <!-- ── No. 07 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_01_15%20PM.png" alt="Marble Queen Pothos in a Champagne bottle" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 07</span>
+      <span class="label-build">Marble Queen × Champagne</span>
+    </div>
+
+    <!-- ── No. 08 ── -->
+    <div class="gallery-item">
+      <img src="photos/raw/ChatGPT%20Image%20Apr%2029%2C%202026%2C%2008_01_20%20PM.png" alt="Chinese Evergreen in a Gin Bottle" loading="lazy">
+      <div class="g-overlay"></div>
+      <span class="label-small">No. 08</span>
+      <span class="label-build">Chinese Evergreen × Gin Bottle</span>
+    </div>
+
   </div>
-  <p class="gallery-note">Photography in progress — follow @plantperhouse on Instagram for the latest.</p>
+  <p class="gallery-note">Also available with ambient LED base lighting — ask us about the add-on when you build your gift.</p>
 </section>
 
 <section class="contact" id="contact">
@@ -275,7 +399,7 @@
     <h2>Get in touch.</h2>
     <p>Tell us your build, your occasion, and your delivery zip. We'll confirm what's in stock and quote you back within 24 hours.</p>
 
-    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form id="contactForm" novalidate>
       <div>
         <label for="name">Your name</label>
         <input type="text" name="name" id="name" required>
@@ -296,7 +420,8 @@
         <label for="notes">Occasion / notes</label>
         <textarea name="notes" id="notes" placeholder="Hostess gift, housewarming, corporate order, etc."></textarea>
       </div>
-      <button type="submit" class="btn btn-terracotta">Send</button>
+      <button type="submit" class="btn btn-terracotta" id="submitBtn">Send</button>
+      <p id="formStatus" style="margin-top:1rem; font-size:.9rem; opacity:.85; min-height:1.2em;"></p>
     </form>
 
     <div class="contact-options">
@@ -310,7 +435,6 @@
   <div class="footer-logo">Plant Per House</div>
   <div class="footer-links">
     <a href="https://instagram.com/plantperhouse" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.tiktok.com/@plantperhouse" target="_blank" rel="noopener">TikTok</a>
     <a href="https://wa.me/15555555555" target="_blank" rel="noopener">WhatsApp</a>
     <a href="mailto:plantperhouse@gmail.com">Email</a>
   </div>
@@ -341,8 +465,13 @@
     { id: 'custom', name: 'You provide', desc: 'Send us a bottle of your own' }
   ];
 
-  // ----- WhatsApp number (replace with your real number, no + or spaces) -----
-  const WHATSAPP_NUMBER = '15555555555';
+  // ============================================================
+  // CONFIG — replace these placeholders before going live
+  // ============================================================
+  const WHATSAPP_NUMBER = '15555555555';                   // your number, no + or spaces
+  const N8N_WEBHOOK_URL = 'https://plantperhouse.app.n8n.cloud/webhook/plantperhouse-form'; // n8n webhook trigger URL
+  // GA4 ID and Meta Pixel ID are in <head> — replace G-XXXXXXXXXX and YOUR_PIXEL_ID
+  // ============================================================
 
   // ----- Render builder options -----
   let selectedPlant = null;
@@ -386,6 +515,9 @@
       formBuild.value = text;
       const msg = encodeURIComponent(`Hi Plant Per House — I'd like to build: ${selectedPlant} × ${selectedBottle}. Can you confirm availability and price?`);
       document.getElementById('waBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+      // GA4 + Pixel: track build completion
+      if (typeof gtag === 'function') gtag('event', 'build_complete', { plant: selectedPlant, vessel: selectedBottle });
+      if (typeof fbq === 'function') fbq('trackCustom', 'BuildComplete', { plant: selectedPlant, vessel: selectedBottle });
     } else if (selectedPlant) {
       summary.classList.add('empty');
       buildText.textContent = `${selectedPlant} × (pick a vessel)`;
@@ -396,6 +528,45 @@
       actions.style.display = 'none';
     }
   }
+
+  // ----- Contact form → n8n webhook -----
+  // The form submits JSON to your n8n webhook trigger. n8n then handles:
+  // (1) log row in Notion CRM, (2) send confirmation email via Resend,
+  // (3) start nurture sequence, (4) ping your WhatsApp with the lead.
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('formStatus');
+    const btn = document.getElementById('submitBtn');
+    const data = Object.fromEntries(new FormData(form));
+    data.source = 'website-contact-form';
+    data.submittedAt = new Date().toISOString();
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+
+    try {
+      const res = await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error('Network error');
+      status.style.color = '#C97B5C';
+      status.textContent = "Got it. We'll be in touch within 24 hours.";
+      form.reset();
+      btn.textContent = 'Sent';
+      // GA4 + Pixel: track lead
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'contact_form' });
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+    } catch (err) {
+      status.style.color = '#ffb4a2';
+      status.textContent = "Couldn't send — please WhatsApp us instead, or email plantperhouse@gmail.com.";
+      btn.disabled = false;
+      btn.textContent = 'Send';
+    }
+  });
 </script>
 
 </body>
