@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Plant Per House — A plant in every bottle</title>
+<meta name="description" content="Hand-paired plants in repurposed wine bottles, liquor decanters, and apothecary jars. Botanical gifts for hostesses, housewarmings, and quiet rebellions against the plastic pot.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Plant Per House — A plant in every bottle">
+<meta property="og:description" content="Hand-paired botanicals in repurposed glass.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2D4A3E;
+    --green-dark: #1F362C;
+    --cream: #F4EFE6;
+    --cream-warm: #EDE5D6;
+    --terracotta: #C97B5C;
+    --ink: #1A2420;
+    --gray: #7A766E;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; letter-spacing: -.01em; }
+  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  h3 { font-size: 1.5rem; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(244,239,230,.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(45,74,62,.08);
+  }
+  .logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--green); letter-spacing: .01em; }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav a { color: var(--ink); text-decoration: none; font-size: .9rem; font-weight: 400; transition: color .15s; }
+  nav a:hover { color: var(--green); }
+
+  section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+
+  .hero {
+    min-height: 80vh;
+    display: flex; flex-direction: column; justify-content: center;
+    text-align: center;
+    padding-top: 4rem;
+  }
+  .hero h1 { color: var(--green); margin-bottom: 1rem; }
+  .hero .tagline {
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.4rem; color: var(--terracotta); margin-bottom: 2rem;
+  }
+  .hero p.lead { max-width: 580px; margin: 0 auto 2.5rem; color: var(--gray); font-size: 1.05rem; }
+
+  .btn {
+    display: inline-block;
+    background: var(--green); color: var(--cream);
+    padding: .9rem 2rem; border-radius: 4px;
+    text-decoration: none; font-size: .95rem;
+    border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+    font-family: var(--sans); font-weight: 500;
+    letter-spacing: .02em;
+  }
+  .btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--green); border: 1px solid var(--green); }
+  .btn-outline:hover { background: var(--green); color: var(--cream); }
+  .btn-whatsapp { background: #25D366; }
+  .btn-whatsapp:hover { background: #1DA851; }
+  .btn-terracotta { background: var(--terracotta); }
+  .btn-terracotta:hover { background: #B86A4D; }
+
+  .story { background: var(--green); color: var(--cream); padding: 6rem 2rem; }
+  .story-inner { max-width: 740px; margin: 0 auto; text-align: center; }
+  .story h2 { color: var(--cream-warm); margin-bottom: 1.5rem; }
+  .story p { font-size: 1.1rem; opacity: .88; margin-bottom: 1rem; }
+  .story p.italic { font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--terracotta); margin-top: 1.5rem; }
+
+  .builder { background: var(--cream-warm); }
+  .builder-inner { max-width: 1100px; margin: 0 auto; }
+  .builder h2 { color: var(--green); text-align: center; margin-bottom: .5rem; }
+  .builder .subtitle { text-align: center; color: var(--gray); margin-bottom: 3rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+  .step-label {
+    font-family: var(--serif); font-size: 1.6rem;
+    color: var(--green); margin: 2.5rem 0 1.25rem;
+    display: flex; align-items: center; gap: .8rem;
+  }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--terracotta); color: var(--cream);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--sans); font-size: .85rem; font-weight: 600;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .option-card {
+    background: var(--cream); border: 1px solid rgba(45,74,62,.12);
+    border-radius: 6px; padding: 1.5rem 1rem; cursor: pointer;
+    transition: all .15s; text-align: center;
+    min-height: 130px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .option-card:hover { border-color: var(--green); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(45,74,62,.08); }
+  .option-card.selected {
+    border-color: var(--green); background: var(--green); color: var(--cream);
+  }
+  .option-card.selected .option-desc { opacity: .85; }
+  .option-name { font-family: var(--serif); font-size: 1.15rem; line-height: 1.2; margin-bottom: .35rem; }
+  .option-desc { font-size: .8rem; opacity: .65; line-height: 1.4; }
+
+  .build-summary {
+    margin-top: 3rem; padding: 2.5rem 2rem;
+    background: var(--cream); border-radius: 8px;
+    border: 1px solid rgba(45,74,62,.12);
+    text-align: center;
+    transition: opacity .2s;
+  }
+  .build-summary.empty { opacity: .55; }
+  .build-summary h3 { color: var(--green); margin-bottom: .25rem; font-family: var(--sans); font-size: .85rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 500; }
+  .build-summary .build-text { font-family: var(--serif); font-size: 1.6rem; margin: .75rem 0; color: var(--ink); }
+  .build-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem; }
+
+  .gallery { background: var(--cream); }
+  .gallery h2 { color: var(--green); text-align: center; margin-bottom: .5rem; }
+  .gallery .subtitle { text-align: center; color: var(--gray); margin-bottom: 3rem; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .gallery-item {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    border-radius: 8px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--cream-warm); padding: 1.5rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+    transition: transform .2s;
+  }
+  .gallery-item:hover { transform: translateY(-3px); }
+  .gallery-item::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 25%, rgba(196,123,92,.18) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .gallery-item .label-small {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: .2em;
+    opacity: .6; margin-bottom: .75rem; position: relative;
+  }
+  .gallery-item .label-build {
+    font-family: var(--serif); font-size: 1.25rem; line-height: 1.3; position: relative;
+  }
+  .gallery-note { text-align: center; margin-top: 2.5rem; color: var(--gray); font-style: italic; font-family: var(--serif); font-size: 1.05rem; }
+
+  .contact { background: var(--green); color: var(--cream); }
+  .contact-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .contact h2 { color: var(--cream-warm); margin-bottom: 1rem; }
+  .contact p { opacity: .85; margin-bottom: 2.5rem; }
+  form { display: grid; gap: 1rem; text-align: left; }
+  label { font-size: .8rem; opacity: .8; margin-bottom: .35rem; display: block; text-transform: uppercase; letter-spacing: .1em; }
+  input, textarea, select {
+    width: 100%; padding: .85rem 1rem;
+    background: rgba(244,239,230,.08); border: 1px solid rgba(244,239,230,.2);
+    color: var(--cream); border-radius: 4px;
+    font-family: var(--sans); font-size: .95rem;
+    transition: border-color .15s;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(244,239,230,.45); }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--terracotta);
+  }
+  textarea { min-height: 100px; resize: vertical; }
+  .contact-options { display: flex; gap: 1rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap; }
+
+  footer {
+    background: var(--green-dark); color: var(--cream-warm);
+    padding: 3rem 2rem; text-align: center;
+  }
+  footer .footer-logo { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1rem; color: var(--cream); }
+  footer .footer-links { display: flex; gap: 1.75rem; justify-content: center; margin: 1.25rem 0; flex-wrap: wrap; }
+  footer a { color: var(--cream-warm); text-decoration: none; opacity: .75; font-size: .9rem; transition: opacity .15s, color .15s; }
+  footer a:hover { opacity: 1; color: var(--terracotta); }
+  footer .copy { font-size: .78rem; opacity: .5; margin-top: 1.5rem; }
+
+  @media (max-width: 640px) {
+    nav { padding: .9rem 1.25rem; }
+    nav ul { gap: 1.1rem; }
+    nav a { font-size: .82rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { min-height: 70vh; padding-top: 2rem; }
+    .step-label { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Plant Per House</div>
+  <ul>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#builder">Build</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>A plant in every bottle.</h1>
+  <p class="tagline">Hand-paired botanicals in glass that's already lived a life.</p>
+  <p class="lead">Plant Per House makes living gifts in repurposed wine bottles, liquor decanters, and apothecary jars. Each one is a small rebellion against the plastic pot — a hostess gift, a housewarming, a quiet hymn to second lives.</p>
+  <a href="#builder" class="btn">Build your gift</a>
+</section>
+
+<section class="story" id="story">
+  <div class="story-inner">
+    <h2>The story.</h2>
+    <p>Every empty wine bottle holds the memory of an evening. Every plant holds the promise of a season. We pair them, root them, and send them as gifts that keep growing.</p>
+    <p class="italic">Made in small batches. Curated by hand. Delivered with a note.</p>
+  </div>
+</section>
+
+<section class="builder" id="builder">
+  <div class="builder-inner">
+    <h2>Build your gift.</h2>
+    <p class="subtitle">Choose a plant, choose a vessel, send us the build. We'll confirm availability and price by WhatsApp or email — no checkout, no card, just a conversation.</p>
+
+    <div class="step-label"><span class="step-num">1</span> Choose your plant</div>
+    <div class="options-grid" id="plants"></div>
+
+    <div class="step-label"><span class="step-num">2</span> Choose your vessel</div>
+    <div class="options-grid" id="bottles"></div>
+
+    <div class="build-summary empty" id="summary">
+      <h3>Your build</h3>
+      <div class="build-text" id="buildText">Make a selection above to see your build.</div>
+      <div class="build-actions" id="buildActions" style="display:none;">
+        <a href="#" class="btn btn-whatsapp" id="waBtn">Send build via WhatsApp</a>
+        <a href="#contact" class="btn btn-outline">Email us instead</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <h2>Recent builds.</h2>
+  <p class="subtitle">A few pairings to spark ideas — or design your own.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item"><span class="label-small">No. 01</span><span class="label-build">Golden Pothos × Bordeaux Bottle</span></div>
+    <div class="gallery-item"><span class="label-small">No. 02</span><span class="label-build">Lucky Bamboo × Champagne</span></div>
+    <div class="gallery-item"><span class="label-small">No. 03</span><span class="label-build">Heart-leaf Philodendron × Whiskey Decanter</span></div>
+    <div class="gallery-item"><span class="label-small">No. 04</span><span class="label-build">Monstera × Apothecary Jar</span></div>
+    <div class="gallery-item"><span class="label-small">No. 05</span><span class="label-build">Spider Plant × Gin Bottle</span></div>
+    <div class="gallery-item"><span class="label-small">No. 06</span><span class="label-build">Peace Lily × Olive Oil Bottle</span></div>
+  </div>
+  <p class="gallery-note">Photography in progress — follow @plantperhouse on Instagram for the latest.</p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <h2>Get in touch.</h2>
+    <p>Tell us your build, your occasion, and your delivery zip. We'll confirm what's in stock and quote you back within 24 hours.</p>
+
+    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" name="name" id="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+      <div>
+        <label for="phone">WhatsApp / phone (optional)</label>
+        <input type="tel" name="phone" id="phone">
+      </div>
+      <div>
+        <label for="formBuild">Your build</label>
+        <input type="text" name="build" id="formBuild" placeholder="e.g., Golden Pothos × Bordeaux Bottle">
+      </div>
+      <div>
+        <label for="notes">Occasion / notes</label>
+        <textarea name="notes" id="notes" placeholder="Hostess gift, housewarming, corporate order, etc."></textarea>
+      </div>
+      <button type="submit" class="btn btn-terracotta">Send</button>
+    </form>
+
+    <div class="contact-options">
+      <a href="https://wa.me/15555555555?text=Hi%20Plant%20Per%20House%2C%20I%27d%20like%20to%20chat%20about%20a%20gift." class="btn btn-whatsapp">Message us on WhatsApp</a>
+      <a href="mailto:plantperhouse@gmail.com" class="btn btn-outline" style="border-color:var(--cream-warm);color:var(--cream-warm);">plantperhouse@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Plant Per House</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/plantperhouse" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@plantperhouse" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://wa.me/15555555555" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="mailto:plantperhouse@gmail.com">Email</a>
+  </div>
+  <p class="copy">© 2026 Plant Per House. A plant in every bottle.</p>
+</footer>
+
+<script>
+  // ----- a-la-carte builder -----
+  // To customize: edit the plants and bottles arrays. Add real product photo URLs later.
+  const plants = [
+    { id: 'pothos-golden', name: 'Golden Pothos', desc: 'Trailing, forgiving, golden variegation' },
+    { id: 'pothos-marble', name: 'Marble Queen', desc: 'White-and-green pothos, elegant' },
+    { id: 'lucky-bamboo', name: 'Lucky Bamboo', desc: 'Sculptural, gifting classic' },
+    { id: 'monstera', name: 'Monstera', desc: 'Statement leaves, slow-grower' },
+    { id: 'philodendron', name: 'Heart-leaf Philodendron', desc: 'Romantic, vining' },
+    { id: 'peace-lily', name: 'Peace Lily', desc: 'Blooms, low-light tolerant' },
+    { id: 'spider-plant', name: 'Spider Plant', desc: 'Air-purifying, lively' },
+    { id: 'aglaonema', name: 'Chinese Evergreen', desc: 'Painterly leaves, hardy' }
+  ];
+  const bottles = [
+    { id: 'bordeaux-clear', name: 'Bordeaux (Clear)', desc: 'Wine bottle, clear glass' },
+    { id: 'bordeaux-green', name: 'Bordeaux (Green)', desc: 'Classic green wine bottle' },
+    { id: 'champagne', name: 'Champagne', desc: 'Heavier base, dramatic shape' },
+    { id: 'whiskey-decanter', name: 'Whiskey Decanter', desc: 'Crystal, faceted, masculine' },
+    { id: 'gin-bottle', name: 'Gin Bottle', desc: 'Often blue or embossed' },
+    { id: 'olive-oil', name: 'Olive Oil Bottle', desc: 'Slim, kitchen-elegant' },
+    { id: 'apothecary', name: 'Apothecary Jar', desc: 'Vintage, wide-mouth' },
+    { id: 'custom', name: 'You provide', desc: 'Send us a bottle of your own' }
+  ];
+
+  // ----- WhatsApp number (replace with your real number, no + or spaces) -----
+  const WHATSAPP_NUMBER = '15555555555';
+
+  // ----- Render builder options -----
+  let selectedPlant = null;
+  let selectedBottle = null;
+
+  function renderOptions(items, containerId, type) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = items.map(it => `
+      <div class="option-card" data-type="${type}" data-id="${it.id}" data-name="${it.name}">
+        <div class="option-name">${it.name}</div>
+        <div class="option-desc">${it.desc}</div>
+      </div>
+    `).join('');
+  }
+
+  renderOptions(plants, 'plants', 'plant');
+  renderOptions(bottles, 'bottles', 'bottle');
+
+  document.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const type = card.dataset.type;
+      document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      if (type === 'plant') selectedPlant = card.dataset.name;
+      if (type === 'bottle') selectedBottle = card.dataset.name;
+      updateSummary();
+    });
+  });
+
+  function updateSummary() {
+    const summary = document.getElementById('summary');
+    const buildText = document.getElementById('buildText');
+    const actions = document.getElementById('buildActions');
+    const formBuild = document.getElementById('formBuild');
+
+    if (selectedPlant && selectedBottle) {
+      summary.classList.remove('empty');
+      const text = `${selectedPlant} × ${selectedBottle}`;
+      buildText.textContent = text;
+      actions.style.display = 'flex';
+      formBuild.value = text;
+      const msg = encodeURIComponent(`Hi Plant Per House — I'd like to build: ${selectedPlant} × ${selectedBottle}. Can you confirm availability and price?`);
+      document.getElementById('waBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+    } else if (selectedPlant) {
+      summary.classList.add('empty');
+      buildText.textContent = `${selectedPlant} × (pick a vessel)`;
+      actions.style.display = 'none';
+    } else if (selectedBottle) {
+      summary.classList.add('empty');
+      buildText.textContent = `(pick a plant) × ${selectedBottle}`;
+      actions.style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>
